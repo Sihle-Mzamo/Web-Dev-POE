@@ -1,0 +1,11 @@
+{
+  "name": "books-and-balls-screenshots",
+  "version": "1.0.0",
+  "description": "Helper to capture responsive screenshots of the Books and Balls site locally",
+  "scripts": {
+    "screenshots": "node screenshot.js"
+  },
+  "devDependencies": {
+    "puppeteer": "^20.0.0"
+  }
+}

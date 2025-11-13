@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Books and Balls Initiative</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="description" content="Contact Books and Balls Initiative — send enquiries about volunteering, sponsoring, or partnerships">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background:#f8fafc; color:#0f172a; font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+    .card { max-width:720px; margin:40px auto; background:white; border-radius:10px; box-shadow:0 6px 18px rgba(2,6,23,0.08); padding:28px; }
+    label { display:block; font-weight:600; margin-top:12px; }
+    .error { color:#b91c1c; font-size:0.9rem; margin-top:6px; }
+    .success { color:#065f46; font-size:1rem; margin-top:12px; }
+    footer { background:#0099FF; color:#00F549; text-align:center; padding:20px; margin-top:40px; }
+  </style>
+</head>
+<body>
+	<header class="bg-gradient-to-r from-blue-600 to-green-500 text-white">	    
+		<div class="max-w-7xl mx-auto flex items-center justify-between py-4 px-6">
+		<div class="flex items-center space-x-2">
+        <div class="bg-white text-blue-600 font-bold rounded-full w-8 h-8 flex items-center justify-center">B&B</div>
+        <span class="font-semibold text-lg">Books and Balls Initiative</span>
+      </div>
+  <nav class="space-x-4 site-nav">
+<a href="Home page.html" class="hover:underline">Home</a>
+			<a href="About page.html" class="hover:underline">About</a>
+			<a href="Services.html" class="hover:underline">Services</a>
+			<a href="Sponser page.html" class="hover:underline">Sponsor</a>
+			<a href="Contact page.html" class="font-semibold bg-white text-blue-600 px-3 py-1 rounded" aria-current="page">Contact</a>
+			<a href="Donate.html" class="hover:underline">Donate</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="card">
+    <h1 class="page-title text-center">Contact Us</h1>
+    <p class="text-center text-gray-600">Send us a message — we'll get back to you shortly.</p>
+
+    <!-- The form uses both a mailto fallback and an AJAX POST endpoint (configurable) -->
+  <form id="contactForm" action="mailto:info@bandb.org" method="post" enctype="text/plain" novalidate>
+      <label for="fullname">Full name</label>
+      <input id="fullname" name="fullname" type="text" required minlength="2" placeholder="Your full name" class="w-full p-3 border rounded" />
+      <div id="err-fullname" class="error" aria-live="polite"></div>
+
+      <label for="email">Email address</label>
+      <input id="email" name="email" type="email" required placeholder="you@example.com" class="w-full p-3 border rounded" />
+      <div id="err-email" class="error" aria-live="polite"></div>
+
+      <label for="phone">Phone number</label>
+      <input id="phone" name="phone" type="tel" pattern="^\+?[0-9\s\-()]{7,20}$" placeholder="+27 82 123 4567" class="w-full p-3 border rounded" />
+      <div id="err-phone" class="error" aria-live="polite"></div>
+
+      <label for="type">Type of message</label>
+      <select id="type" name="type" required class="w-full p-3 border rounded">
+        <option value="">-- Please select --</option>
+        <option value="general">General enquiry</option>
+        <option value="sponsorship">Sponsorship</option>
+        <option value="partnership">Partnership</option>
+        <option value="volunteer">Volunteer</option>
+      </select>
+      <div id="err-type" class="error" aria-live="polite"></div>
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" required minlength="10" maxlength="3000" rows="6" class="w-full p-3 border rounded" placeholder="Write your message here..."></textarea>
+      <div id="err-message" class="error" aria-live="polite"></div>
+
+      <div class="flex items-center justify-between mt-4">
+        <button id="sendBtn" type="submit" class="px-4 py-2 bg-green-500 text-white rounded">Send Message</button>
+  <small class="text-gray-500">Or email us at <a href="mailto:info@bandb.org" class="underline">info@bandb.org</a></small>
+      </div>
+
+      <div id="formStatus" role="status"></div>
+    </form>
+
+    <script>
+      (function(){
+        const form = document.getElementById('contactForm');
+        const status = document.getElementById('formStatus');
+        const sendBtn = document.getElementById('sendBtn');
+
+  // Configurable AJAX endpoint (optional). If left empty, form will use mailto fallback.
+  // Example (Formspree): replace 'your-form-id' with your Formspree form ID
+  // To use Formspree: create a form at https://formspree.io and use the provided endpoint like below.
+  const AJAX_ENDPOINT = 'https://formspree.io/f/your-form-id'; // e.g. 'https://formspree.io/f/xyz123'
+
+        function setError(id, msg){ document.getElementById('err-' + id).textContent = msg || ''; }
+        function clearErrors(){ ['fullname','email','phone','type','message'].forEach(k => setError(k, '')); }
+
+        function validate(){
+          clearErrors();
+          let ok = true;
+          const fullname = form.fullname.value.trim();
+          const email = form.email.value.trim();
+          const phone = form.phone.value.trim();
+          const type = form.type.value;
+          const message = form.message.value.trim();
+
+          if(fullname.length < 2){ setError('fullname', 'Please enter your full name (at least 2 characters).'); ok = false; }
+          if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ setError('email', 'Please enter a valid email address.'); ok = false; }
+          if(phone && !/^\+?[0-9\s\-()]{7,20}$/.test(phone)){ setError('phone', 'Please enter a valid phone number or leave blank.'); ok = false; }
+          if(!type){ setError('type', 'Please select the type of your message.'); ok = false; }
+          if(message.length < 10){ setError('message', 'Message is too short (minimum 10 characters).'); ok = false; }
+          if(message.length > 3000){ setError('message', 'Message is too long.'); ok = false; }
+          return ok;
+        }
+
+        form.addEventListener('submit', function(e){
+          e.preventDefault();
+          status.textContent = '';
+          if(!validate()){
+            status.innerHTML = '<p class="error">Please fix the errors above and try again.</p>';
+            return;
+          }
+
+          // Build email body
+          const data = {
+            fullname: form.fullname.value.trim(),
+            email: form.email.value.trim(),
+            phone: form.phone.value.trim(),
+            type: form.type.value,
+            message: form.message.value.trim()
+          };
+
+          const subject = encodeURIComponent('Website Contact: ' + data.type + ' - ' + data.fullname);
+          const bodyLines = [
+            'Name: ' + data.fullname,
+            'Email: ' + data.email,
+            'Phone: ' + data.phone,
+            'Type: ' + data.type,
+            '',
+            data.message
+          ];
+          const body = encodeURIComponent(bodyLines.join('\n'));
+
+          if(AJAX_ENDPOINT){
+            // Send via AJAX. If endpoint looks like Formspree, send form-encoded data (Formspree commonly accepts form posts).
+            sendBtn.disabled = true;
+            sendBtn.textContent = 'Sending...';
+            let fetchOptions;
+            if (AJAX_ENDPOINT.includes('formspree.io')) {
+              const params = new URLSearchParams();
+              Object.keys(data).forEach(k => params.append(k, data[k]));
+              fetchOptions = { method: 'POST', body: params };
+            } else {
+              fetchOptions = { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) };
+            }
+
+            fetch(AJAX_ENDPOINT, fetchOptions).then(r => {
+              if(!r.ok) throw new Error('Network error');
+              try { return r.json(); } catch(e) { return r.text(); }
+            }).then(resp => {
+              status.innerHTML = '<p class="success">Message sent. Thank you!</p>';
+              form.reset();
+            }).catch(err => {
+              status.innerHTML = '<p class="error">Could not send message via AJAX. Please try the mail client option below or contact us directly.</p>';
+            }).finally(()=>{ sendBtn.disabled = false; sendBtn.textContent = 'Send Message'; });
+
+          } else {
+            // Fallback to mailto: open user's mail client with prefilled content
+            const recipient = 'info@bandb.org';
+            const mailto = 'mailto:' + encodeURIComponent(recipient) + '?subject=' + subject + '&body=' + body;
+            window.location.href = mailto;
+            status.innerHTML = '<p class="success">Your mail client should open. If not, send your message to info@bandb.org</p>';
+          }
+        });
+
+        // Real-time validation (optional)
+        ['fullname','email','phone','type','message'].forEach(id => {
+          document.getElementById(id).addEventListener('input', () => { if(document.getElementById('err-'+id).textContent) validate(); });
+        });
+      })();
+    </script>
+  </main>
+
+	<footer class="bg-blue-500 text-green-400 text-center py-6 mt-10">
+        &copy; 2025 Books and Balls Initiative. All rights reserved.
+	</footer>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+	
+	<html lang="en">
+		
+		<head>
+			<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<title>NPO: Website</title>
+			<script src="https://cdn.tailwindcss.com"></script>
+			<meta name="description" content="Enquiries — contact Books and Balls Initiative for volunteering, donations and partnerships">
+			<link rel="stylesheet" href="style.css">
+		<style>
+		.enquiry-section {
+		  max-width: 700px;
+		  margin: 40px auto;
+		  padding: 30px;
+		  background: white;
+		  border-radius: 10px;
+		  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+		}
+
+		.enquiry-section h2 {
+		  color: #2e7d32;
+		  text-align: center;
+		  margin-bottom: 20px;
+		}
+
+		form label {
+		  display: block;
+		  margin-top: 15px;
+		  font-weight: bold;
+		}
+
+		form input, form textarea, form select {
+		  width: 100%;
+		  padding: 12px;
+		  margin-top: 5px;
+		  border: 1px solid #ccc;
+		  border-radius: 6px;
+		  font-size: 1em;
+		}
+
+		form textarea {
+		  height: 120px;
+		  resize: vertical;
+		}
+
+		.btn-submit {
+		  display: inline-block;
+		  margin-top: 20px;
+		  padding: 12px 20px;
+		  background: #00F549;
+		  color: white;
+		  border: none;
+		  border-radius: 6px;
+		  font-size: 1em;
+		  cursor: pointer;
+		  transition: 0.3s;
+		}
+
+		.btn-submit:hover {
+		  background: #0099FF;
+		}
+
+		.contact-info {
+		  text-align: center;
+		  margin-top: 40px;
+		  padding: 20px;
+		  background: #e8f5e9;
+		  border-radius: 10px;
+		}
+
+		.contact-info p {
+		  margin: 8px 0;
+		}
+
+		footer {
+            background: #0099FF;
+            color: #00F549;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+		</style>
+		</head>
+		
+		<body class="bg-gray-50 text-gray-800">
+		<header class="bg-gradient-to-r from-blue-600 to-green-500 text-white">
+		<div class="max-w-7xl mx-auto flex items-center justify-between py-4 px-6">
+		<div class="flex items-center space-x-2">
+		<div class="bg-white text-blue-600 font-bold rounded-full w-8 h-8 flex items-center justify-center">B&B</div>
+		<span class="font-semibold text-lg">Books and Balls Initiative</span>
+		</div>
+		<nav class="space-x-4 site-nav">
+			<a href="Home page.html" class="hover:underline">Home</a>
+			<a href="About page.html" class="hover:underline">About</a>
+			<a href="Services.html" class="hover:underline">Services</a>
+			<a href="Sponser page.html" class="hover:underline">Sponsor</a>
+			<a href="Enquiries.html" class="font-semibold bg-white text-blue-600 px-3 py-1 rounded" aria-current="page">Enquiry</a>
+			<a href="Donate.html" class="hover:underline">Donate</a>
+		</nav>
+		</div>
+		</header>
+		<section class="enquiry-section page-intro">
+			<h1 class="page-title">Contact Us</h1>
+			<p class="text-center">We would love to hear from you. Send us your enquiries below.</p>
+		</section>
+
+		<section class="enquiry-section">
+			<h2 class="page-subtitle">Enquiry Form</h2>
+			<form action="mailto:youremail@example.com" method="post" enctype="text/plain">
+			<label for="name">Full Name</label>
+			<input type="text" id="name" name="name" required>
+
+			<label for="email">Email Address</label>
+			<input type="email" id="email" name="email" required>
+
+			<label for="phone">Phone Number</label>
+			<input type="tel" id="phone" name="phone">
+
+		<label for="type">Type of Enquiry</label>
+		<select id="type" name="type" required>
+			  <option value="">-- Please Select --</option>
+			  <option value="General">General Question</option>
+			  <option value="Sponsorship">Sponsorship</option>
+			  <option value="Partnership">Partnership</option>
+			  <option value="Volunteer">Volunteer</option>
+		</select>
+
+		<label for="message">Your Message</label>
+			<textarea id="message" name="message" required></textarea>
+
+		<button type="submit" class="btn-submit">Send Enquiry</button>
+		</form>
+		</section>
+		
+		<header>
+		<div class="contact-info">
+		  <h2>Other Ways to Reach Us</h2>
+		  <p>Email: info@B&B.org</p>
+		  <p>Phone: +27 82 123 4567</p>
+		  <p>Address: 123 Hope Street, Johannesburg, South Africa</p>
+		</div>
+
+		<footer>
+		  <p>© 2025 Books and Balls Initiative | Building Hope Together</p>
+		</footer>
+
+		</body>
+	</html>
+
+	
