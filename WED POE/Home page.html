@@ -1,52 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Books and Balls Initiative - Homepage</title>
-	<meta name="description" content="Books and Balls Initiative - Empowering children through education, nutrition, and sports">
-	<script src="https://cdn.tailwindcss.com"></script>
-	<link rel="stylesheet" href="style.css">
-</head>
+	<head>
+	  <meta charset="UTF-8" />
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	  <title>Books and Balls Initiative - Homepage</title>
+	  <meta name="description" content="Books and Balls Initiative - Empowering children through education, nutrition and sports">
+	  <meta name="keywords" content="books and balls, charity, education, youth sports, donations, volunteering, community support">
+	  <script src="https://cdn.tailwindcss.com"></script>
+	  <link rel="stylesheet" href="style.css">
+	</head>
+
 	<body class="bg-gray-100 text-gray-800 font-serif">
 
-
-	<header class="bg-gradient-to-r from-blue-600 to-green-500 text-white">		
+	  <header class="bg-gradient-to-r from-blue-600 to-green-500 text-white">
 		<div class="mb-6">
-			<img src="B&BITT.jpg" alt="Books and Balls Initiative Logo"
-				 class="mx-auto w-40 md:w-56 h-auto rounded-lg shadow-lg">
+		  <img src="B&BITT.jpg" alt="Books and Balls Initiative Logo"
+			   class="mx-auto w-40 md:w-56 h-auto rounded-lg shadow-lg">
 		</div>
 
-
-		<nav class="flex justify-center flex-wrap gap-3 site-nav">
-			<a href="Home page.html" class="nav-link">Home</a>
-			<a href="About page.html" class="nav-link">About</a>
-			<a href="Services.html" class="nav-link">Services</a>
-			<a href="Sponser page.html" class="nav-link">Sponsors</a>
-			<a href="Contact page.html" class="nav-link">Contact</a>
-			<a href="Donate.html" class="nav-link">Donate</a>
+		<nav class="flex justify-center flex-wrap gap-3 site-nav" aria-label="Primary">
+		  <a href="Home page.html" class="nav-link">Home</a>
+		  <a href="About page.html" class="nav-link">About</a>
+		  <a href="Services.html" class="nav-link">Services</a>
+		  <a href="Sponser page.html" class="nav-link">Sponsors</a>
+		  <a href="Contact page.html" class="nav-link">Contact</a>
+		  <a href="Donate.html" class="nav-link">Donate</a>
 		</nav>
-	</header>
+	  </header>
 
-	<main class="text-center p-10">
+	  <main id="mainContent" class="text-center p-10 opacity-0 transform translate-y-4">
 		<h1 class="text-4xl font-bold mb-4">Welcome to Books and Balls Initiative</h1>
 		<p class="text-xl text-blue-600 underline mb-6">Feeding Minds and Goals for the Future</p>
 		<p class="max-w-2xl mx-auto text-lg mb-8">
-			Empowering orphaned and underprivileged children through education, food, and sports — 
-			keeping them off drugs and guiding them toward a brighter future.
+		  Empowering orphaned and underprivileged children through education, food, and sports —
+		  keeping them off drugs and guiding them toward a brighter future.
 		</p>
 
-		<div class="space-x-4">
-			<a href="Donate.html" class="inline-block px-6 py-3 bg-blue-500 text-white rounded-full font-bold hover:bg-blue-600">Donate Now</a>
-			<a href="Contact page.html" class="inline-block px-6 py-3 bg-blue-500 text-white rounded-full font-bold hover:bg-blue-600">Volunteer / Sponsor</a>
-			<a href="Services.html" class="inline-block px-6 py-3 bg-blue-500 text-white rounded-full font-bold hover:bg-blue-600">Our Programs</a>
+		<div class="space-x-4 mb-8">
+		  <a href="Donate.html" class="inline-block px-6 py-3 bg-blue-600 text-white rounded-full font-bold hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-blue-300">Donate Now</a>
+		  <a href="Contact page.html" class="inline-block px-6 py-3 bg-blue-600 text-white rounded-full font-bold hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-blue-300">Volunteer / Sponsor</a>
+		  <a href="Services.html" class="inline-block px-6 py-3 bg-blue-600 text-white rounded-full font-bold hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-blue-300">Our Programs</a>
 		</div>
-		
-	</main>
 
-	<footer class="bg-blue-500 text-green-400 text-center py-6 mt-10">
-        &copy; 2025 Books and Balls Initiative. All rights reserved.
-    </footer>
+		<section class="max-w-3xl mx-auto text-left mb-12">
+		  <div id="quoteCard" class="mb-6 p-4 rounded-lg shadow-sm bg-white">
+			<h2 class="text-2xl font-semibold mb-2">Quote of the Day</h2>
+			<p id="quoteText" class="text-lg text-gray-700">Loading inspirational quote...</p>
+		  </div>
+
+		  <div class="bg-white rounded-lg shadow-sm divide-y">
+			<h3 class="sr-only">More about Books and Balls Initiative</h3>
+
+			<div class="accordion-item">
+			  <button class="accordion-button w-full text-left px-4 py-4 flex justify-between items-center" aria-expanded="false" aria-controls="acc-panel-1" id="acc-button-1">
+				<span class="font-semibold">Our Mission</span>
+				<span class="accordion-icon">+</span>
+			  </button>
+			  <div id="acc-panel-1" class="accordion-panel px-4 py-2 hidden" role="region" aria-labelledby="acc-button-1">
+				<p>To provide consistent access to education, nutrition, and sports programs that empower children to reach their potential.</p>
+			  </div>
+			</div>
+
+			<div class="accordion-item">
+			  <button class="accordion-button w-full text-left px-4 py-4 flex justify-between items-center" aria-expanded="false" aria-controls="acc-panel-2" id="acc-button-2">
+				<span class="font-semibold">Our Vision</span>
+				<span class="accordion-icon">+</span>
+			  </button>
+			  <div id="acc-panel-2" class="accordion-panel px-4 py-2 hidden" role="region" aria-labelledby="acc-button-2">
+				<p>To see thriving communities where every child has the tools and support to learn, play and grow.</p>
+			  </div>
+			</div>
+
+			<div class="accordion-item">
+			  <button class="accordion-button w-full text-left px-4 py-4 flex justify-between items-center" aria-expanded="false" aria-controls="acc-panel-3" id="acc-button-3">
+				<span class="font-semibold">Our Values</span>
+				<span class="accordion-icon">+</span>
+			  </button>
+			  <div id="acc-panel-3" class="accordion-panel px-4 py-2 hidden" role="region" aria-labelledby="acc-button-3">
+				<p>Compassion, accountability, community collaboration, and a strong focus on child welfare and education.</p>
+			  </div>
+			</div>
+		  </div>
+		</section>
+
+	  </main>
+
+	  <footer class="bg-blue-600 text-green-500 text-center py-6 mt-10">
+		&copy; 2025 Books and Balls Initiative. All rights reserved.
+	  </footer>
+
+	  <script>
+		document.addEventListener('DOMContentLoaded', function () {
+		  const main = document.getElementById('mainContent');
+		  setTimeout(() => {
+			main.style.transition = 'opacity 500ms ease, transform 500ms ease';
+			main.style.opacity = '1';
+			main.style.transform = 'translateY(0)';
+		  }, 80);
+
+		  const buttons = document.querySelectorAll('.accordion-button');
+		  buttons.forEach(btn => {
+			btn.addEventListener('click', () => toggleAccordion(btn));
+			btn.addEventListener('keydown', (e) => {
+			  if (e.key === 'Enter' || e.key === ' ') {
+				e.preventDefault();
+				toggleAccordion(btn);
+			  }
+			});
+		  });
+
+		  setQuoteOfTheDay();
+		});
+
+		function toggleAccordion(button) {
+		  const panelId = button.getAttribute('aria-controls');
+		  const panel = document.getElementById(panelId);
+		  const expanded = button.getAttribute('aria-expanded') === 'true';
+
+		  if (!expanded) {
+			document.querySelectorAll('.accordion-button').forEach(b => {
+			  if (b !== button) {
+				b.setAttribute('aria-expanded', 'false');
+				b.querySelector('.accordion-icon').textContent = '+';
+				const otherPanel = document.getElementById(b.getAttribute('aria-controls'));
+				if (otherPanel) otherPanel.classList.add('hidden');
+			  }
+			});
+		  }
+
+		  button.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+		  button.querySelector('.accordion-icon').textContent = expanded ? '+' : '−';
+		  if (panel) panel.classList.toggle('hidden');
+		}
+
+		function setQuoteOfTheDay() {
+		  const quotes = [
+			"Education is the most powerful weapon which you can use to change the world. — Nelson Mandela",
+			"A healthy body equals a healthy mind — we believe in both for every child.",
+			"Play is the work of the child — we provide safe spaces to learn and play.",
+			"Every child deserves a chance. Help us make that chance meaningful.",
+			"Small acts, when multiplied by millions, can transform communities.",
+			"Teaching one child is teaching a generation.",
+			"Together we can build brighter futures through books and balls."
+		  ];
+
+		  const now = new Date();
+		  const start = new Date(now.getFullYear(), 0, 0);
+		  const diff = now - start;
+		  const oneDay = 1000 * 60 * 60 * 24;
+		  const dayOfYear = Math.floor(diff / oneDay);
+		  const index = dayOfYear % quotes.length;
+		  const quoteText = quotes[index];
+
+		  const quoteEl = document.getElementById('quoteText');
+		  if (quoteEl) {
+			quoteEl.textContent = quoteText;
+		  }
+		}
+	  </script>
+
+		// load shared JS
+		const s = document.createElement('script'); s.src='main.js'; document.body.appendChild(s);
+
 	</body>
-
+	
 </html>

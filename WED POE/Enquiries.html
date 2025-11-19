@@ -108,7 +108,7 @@
 
 		<section class="enquiry-section">
 			<h2 class="page-subtitle">Enquiry Form</h2>
-			<form action="mailto:youremail@example.com" method="post" enctype="text/plain">
+			<form id="enquiryForm" action="#" method="post" class="enquiry-form" novalidate>
 			<label for="name">Full Name</label>
 			<input type="text" id="name" name="name" required>
 
@@ -120,19 +120,22 @@
 
 		<label for="type">Type of Enquiry</label>
 		<select id="type" name="type" required>
-			  <option value="">-- Please Select --</option>
-			  <option value="General">General Question</option>
-			  <option value="Sponsorship">Sponsorship</option>
-			  <option value="Partnership">Partnership</option>
-			  <option value="Volunteer">Volunteer</option>
+		  	<option value="">-- Please Select --</option>
+		  	<option value="General">General Question</option>
+		  	<option value="Sponsorship">Sponsorship</option>
+		  	<option value="Partnership">Partnership</option>
+		  	<option value="Volunteer">Volunteer</option>
 		</select>
 
 		<label for="message">Your Message</label>
 			<textarea id="message" name="message" required></textarea>
 
 		<button type="submit" class="btn-submit">Send Enquiry</button>
+		<div id="enquiryStatus" role="status"></div>
 		</form>
 		</section>
+		
+		<script src="main.js"></script>
 		
 		<header>
 		<div class="contact-info">

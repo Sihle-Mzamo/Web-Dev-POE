@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://your-username.github.io/your-repo-name/Home%20page.html</loc>
+  </url>
+  <url>
+    <loc>https://your-username.github.io/your-repo-name/About%20page.html</loc>
+  </url>
+  <url>
+    <loc>https://your-username.github.io/your-repo-name/Services.html</loc>
+  </url>
+  <url>
+    <loc>https://your-username.github.io/your-repo-name/Sponser%20page.html</loc>
+  </url>
+  <url>
+    <loc>https://your-username.github.io/your-repo-name/Enquiries.html</loc>
+  </url>
+  <url>
+    <loc>https://your-username.github.io/your-repo-name/Contact%20page.html</loc>
+  </url>
+  <url>
+    <loc>https://your-username.github.io/your-repo-name/Donate.html</loc>
+  </url>
+  
+  <url>
+    <loc>https://example.com/Home page.html</loc>
+  </url>
+
+  <url>
+    <loc>https://example.com/About page.html</loc>
+  </url>
+
+  <url>
+    <loc>https://example.com/Services.html</loc>
+  </url>
+
+  <url>
+    <loc>https://example.com/Sponser page.html</loc>
+  </url>
+
+  <url>
+    <loc>https://example.com/Contact page.html</loc>
+  </url>
+
+  <url>
+    <loc>https://example.com/Donate.html</loc>
+  </url>
+
+</urlset>
+
+</urlset>

@@ -210,6 +210,66 @@ p{ font-size:var(--step-0); color:var(--color-text); }
 .site-header .brand{ flex:0 0 auto; }
 .site-header nav.site-nav{ display:flex; align-items:center; gap:0.5rem; }
 
+/* --- NEW: fade-in initial transform (main already has inline classes) --- */
+#mainContent {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+/* Quote card adjustments */
+#quoteCard {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 14px rgba(2,6,23,0.06);
+}
+
+/* Accordion styles */
+.accordion-item + .accordion-item {
+  border-top: 1px solid #eef2f7;
+}
+
+.accordion-button {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.accordion-button:focus {
+  outline: 3px solid rgba(59,130,246,0.2);
+  outline-offset: 2px;
+}
+
+.accordion-icon {
+  font-size: 1.25rem;
+  width: 28px;
+  text-align: center;
+}
+
+/* panel hidden class (we use tailwind's hidden but ensure fallback) */
+.accordion-panel.hidden {
+  display: none;
+}
+
+/* ensure panels look neat */
+.accordion-panel p {
+  margin: 0.25rem 0 0.75rem;
+  color: #334155;
+  line-height: 1.5;
+}
+
+/* small responsive tweak for accordion text */
+@media (max-width: 480px) {
+  .accordion-button { padding: 12px; }
+  .accordion-panel { padding: 12px; }
+}
+
+
 /* ----------------------------
    Visual / interactive styles
    ---------------------------- */

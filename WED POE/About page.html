@@ -1,91 +1,205 @@
 <!DOCTYPE html>
-	
-	<html lang="en">
-		
-		<head>
-			<meta charset="UTF-8">
-			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<title>About — Books and Balls Initiative</title>
-			<script src="https://cdn.tailwindcss.com"></script>
-			<meta name="description" content="About Books and Balls Initiative — mission, vision and team">
-			<link rel="stylesheet" href="style.css">
-			<style>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>About — Books and Balls Initiative</title>
+		<meta name="description" content="Learn more about the Books and Balls Initiative — our mission, vision, values, and team dedicated to uplifting underprivileged children through education, nutrition, and sports.">
+
+		<script src="https://cdn.tailwindcss.com"></script>
+		<link rel="stylesheet" href="style.css">
+
+		<style>
 			footer {
 				background: #0099FF;
 				color: #00F549;
 				text-align: center;
 				padding: 20px;
 				margin-top: 50px;
-			</style>
-		</head>
-		
-		<body class="bg-gray-50 text-gray-800">
-		<header class="bg-gradient-to-r from-blue-600 to-green-500 text-white">
-		<div class="max-w-7xl mx-auto flex items-center justify-between py-4 px-6">
-		<div class="flex items-center space-x-2">
-		<div class="bg-white text-blue-600 font-bold rounded-full w-8 h-8 flex items-center justify-center">B&B</div>
-		<span class="font-semibold text-lg">Books and Balls Initiative</span>
-		 </div>
-		 
-		<nav class="space-x-4 site-nav">
-			<a href="Home page.html" class="hover:underline">Home</a>
-			<a href="About page.html" class="font-semibold bg-white text-blue-600 px-3 py-1 rounded" aria-current="page">About</a>
-			<a href="Services.html" class="hover:underline">Services</a>
-			<a href="Sponser page.html" class="hover:underline">Sponsor</a>
-			<a href="Contact page.html" class="hover:underline">Contact</a>
-			<a href="Donate.html" class="hover:underline">Donate</a>
-		</nav>
-		</div>
-		</header>
-		
-		<section class="text-center py-12">
-		<h2 class="text-3xl font-bold mb-4">About Us</h2>
-		<p class="max-w-2xl mx-auto text-gray-600">
-		  The Books and Balls Initiative was founded on the 4th of August 2025, our NPO uplifts children in orphanages and poverty-stricken areas. 
-		  By combining education, nutrition, and sports to create safe environments for children in South Africa to learn, grow and thrive.
-		  Which leads to creating a better and a much brighter future for children in South Africa and soon to children all over the world.
-		</p>
-		</section>
+			}
 
-		<section class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 px-6 mb-12">
-		<div class="bg-white shadow rounded-xl p-6">
-		<h3 class="font-bold text-lg mb-2">Vision</h3>
-		<p class="text-gray-600">A South Africa where every child has access to quality education, proper nutrition, and safe spaces for sport.</p>
+			/* Accordion styling (Part 3 requirement) */
+			.accordion-btn {
+				cursor: pointer;
+			}
+
+			.accordion-content {
+				display: none;
+				transition: all 0.3s ease;
+			}
+
+			.accordion-content.open {
+				display: block;
+			}
+		</style>
+	</head>
+
+	<body class="bg-gray-50 text-gray-800">
+
+	<header class="bg-gradient-to-r from-blue-600 to-green-500 text-white">
+		<div class="max-w-7xl mx-auto flex items-center justify-between py-4 px-6">
+			<div class="flex items-center space-x-2">
+				<div class="bg-white text-blue-600 font-bold rounded-full w-8 h-8 flex items-center justify-center">B&B</div>
+				<span class="font-semibold text-lg">Books and Balls Initiative</span>
+			</div>
+
+			<nav class="space-x-4 site-nav" aria-label="Main navigation">
+				<a href="Home page.html" class="hover:underline">Home</a>
+				<a href="About page.html" class="font-semibold bg-white text-blue-600 px-3 py-1 rounded" aria-current="page">About</a>
+				<a href="Services.html" class="hover:underline">Services</a>
+				<a href="Sponser page.html" class="hover:underline">Sponsor</a>
+				<a href="Contact page.html" class="hover:underline">Contact</a>
+				<a href="Donate.html" class="hover:underline">Donate</a>
+			</nav>
 		</div>
-		
-		<div class="bg-white shadow rounded-xl p-6">
-		<h3 class="font-bold text-lg mb-2">Mission</h3>
-		<p class="text-gray-600">Empower orphaned and underprivileged children through volunteer-led education, food support, and structured sports keeping them away from any sort of substance abuse.</p>
+	</header>
+
+	<section class="text-center py-12">
+		<h1 class="text-3xl font-bold mb-4">About Us</h1>
+
+		<p class="max-w-2xl mx-auto text-gray-600">
+			The Books and Balls Initiative was founded on the 4th of August 2025 to uplift children in orphanages and 
+			poverty-stricken areas. We combine education, nutrition, and sports to create safe environments where children 
+			in South Africa can learn, grow, and thrive — building a brighter future for generations to come.
+		</p>
+	</section>
+
+	<section class="max-w-6xl mx-auto px-6 mb-12 text-center">
+		<h2 class="text-2xl font-bold mb-6">Our Impact</h2>
+
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+			<div class="bg-white shadow rounded-xl p-6">
+				<p class="text-4xl font-bold text-blue-600 counter" data-target="500">0</p>
+				<p class="text-gray-600 mt-2">Children Reached</p>
+			</div>
+
+			<div class="bg-white shadow rounded-xl p-6">
+				<p class="text-4xl font-bold text-blue-600 counter" data-target="1200">0</p>
+				<p class="text-gray-600 mt-2">Meals Served</p>
+			</div>
+
+			<div class="bg-white shadow rounded-xl p-6">
+				<p class="text-4xl font-bold text-blue-600 counter" data-target="200">0</p>
+				<p class="text-gray-600 mt-2">Books Donated</p>
+			</div>
 		</div>
-		
+	</section>
+
+	<section class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 px-6 mb-12">
 		<div class="bg-white shadow rounded-xl p-6">
-		 <h3 class="font-bold text-lg mb-2">Values</h3>
-		 <p class="text-gray-600">Education • Integrity • Discipline • Community • Hope</p>
+			<h3 class="font-bold text-lg mb-2">Vision</h3>
+			<p class="text-gray-600">A South Africa where every child has access to quality education, proper nutrition, and safe spaces for sport.</p>
 		</div>
-		</section>
-	  
-		<section class="max-w-6xl mx-auto px-6 mb-12">
+
+		<div class="bg-white shadow rounded-xl p-6">
+			<h3 class="font-bold text-lg mb-2">Mission</h3>
+			<p class="text-gray-600">Empowering orphaned and underprivileged children through volunteer-led education, food support, and structured sporting programmes that keep them safe from substance abuse.</p>
+		</div>
+
+		<div class="bg-white shadow rounded-xl p-6">
+			<h3 class="font-bold text-lg mb-2">Values</h3>
+			<p class="text-gray-600">Education • Integrity • Discipline • Community • Hope</p>
+		</div>
+	</section>
+
+	<section class="max-w-6xl mx-auto px-6 mb-12">
+		<h2 class="text-2xl font-bold mb-6">More About Our Work</h2>
+
+		<div class="bg-white shadow rounded-xl p-4 mb-4">
+			<button class="accordion-btn font-bold text-lg w-full text-left" aria-expanded="false" aria-controls="acc1">
+				• Our Educational Programs
+			</button>
+			<div id="acc1" class="accordion-content text-gray-600 mt-2">
+				We provide tutoring, study resources, pop-up libraries, and reading clubs in under-resourced communities.
+			</div>
+		</div>
+
+		<div class="bg-white shadow rounded-xl p-4 mb-4">
+			<button class="accordion-btn font-bold text-lg w-full text-left" aria-expanded="false" aria-controls="acc2">
+				• Nutrition Support
+			</button>
+			<div id="acc2" class="accordion-content text-gray-600 mt-2">
+				Children receive meal packs and healthy snacks during school and sports days.
+			</div>
+		</div>
+
+		<div class="bg-white shadow rounded-xl p-4">
+			<button class="accordion-btn font-bold text-lg w-full text-left" aria-expanded="false" aria-controls="acc3">
+				• Sports Development
+			</button>
+			<div id="acc3" class="accordion-content text-gray-600 mt-2">
+				Through structured sports coaching, we build teamwork, discipline, confidence, and physical health.
+			</div>
+		</div>
+	</section>
+
+	<section class="max-w-6xl mx-auto px-6 mb-12">
 		<h2 class="text-2xl font-bold mb-6">Our Team</h2>
+
 		<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-		<div class="bg-white shadow rounded-xl p-4 flex items-center space-x-4">
-		<div class="bg-blue-100 text-blue-600 font-bold rounded-full w-10 h-10 flex items-center justify-center">S</div>
-		<div>
-				<p class="font-bold">Mr. S.Mzamo (Founder)</p>
-				<p class="text-sm text-gray-600">Vision & Partnerships</p>
+			<div class="bg-white shadow rounded-xl p-4 flex items-center space-x-4">
+				<div class="bg-blue-100 text-blue-600 font-bold rounded-full w-10 h-10 flex items-center justify-center">S</div>
+				<div>
+					<p class="font-bold">Mr. S. Mzamo (Founder)</p>
+					<p class="text-sm text-gray-600">Vision & Partnerships</p>
 				</div>
+			</div>
+
+			<div class="bg-white shadow rounded-xl p-4 flex items-center space-x-4">
+				<div class="bg-blue-100 text-blue-600 font-bold rounded-full w-10 h-10 flex items-center justify-center">M</div>
+				<div>
+					<p class="font-bold">Miss M. Rascall</p>
+					<p class="text-sm text-gray-600">Operations & Finance</p>
 				</div>
-		<div class="bg-white shadow rounded-xl p-4 flex items-center space-x-4">
-		<div class="bg-blue-100 text-blue-600 font-bold rounded-full w-10 h-10 flex items-center justify-center">M</div>
-		<div>
-		<p class="font-bold">Miss. M.Rascall</p>
-		<p class="text-sm text-gray-600">Operations and Finance</p>
+			</div>
 		</div>
-		</div>
-		</section>
-		
-		<footer class="bg-blue-500 text-green-400 text-center py-6 mt-10">
-			&copy; 2025 Books and Balls Initiative. All rights reserved.
-		</footer>
-		</body>
-		
-	</html>
+	</section>
+
+	<footer class="bg-blue-600 text-green-500 text-center py-6 mt-10">
+		&copy; 2025 Books and Balls Initiative. All rights reserved.
+	</footer>
+
+	<script>
+	/* ---------------------------
+	   Animated Impact Counters
+	----------------------------*/
+	const counters = document.querySelectorAll('.counter');
+
+	counters.forEach(counter => {
+		let target = +counter.getAttribute('data-target');
+		let count = 0;
+		let step = target / 80;
+
+		function update() {
+			if (count < target) {
+				count += step;
+				counter.textContent = Math.floor(count);
+				requestAnimationFrame(update);
+			} else {
+				counter.textContent = target;
+			}
+		}
+		update();
+	});
+
+	/* ---------------------------
+	   Accordion Interactivity
+	----------------------------*/
+	const accordionButtons = document.querySelectorAll('.accordion-btn');
+
+	accordionButtons.forEach(btn => {
+		btn.addEventListener('click', () => {
+			let content = btn.nextElementSibling;
+
+			// toggle open class
+			content.classList.toggle('open');
+
+			// update ARIA states
+			let expanded = btn.getAttribute('aria-expanded') === "true";
+			btn.setAttribute('aria-expanded', !expanded);
+		});
+	});
+	</script>
+
+	</body>
+</html>

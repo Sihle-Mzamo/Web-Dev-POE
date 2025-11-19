@@ -1,77 +1,304 @@
 <!DOCTYPE html>
-
-	<html lang="en">
-		<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Donate - Our NPO</title>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Donate | Books and Balls Initiative</title>
+		<meta name="description" content="Support the Books and Balls Initiative — donate to provide educational resources and sports equipment to children in need." />
 		<script src="https://cdn.tailwindcss.com"></script>
-		<meta name="description" content="Support our mission — donate to Books and Balls Initiative">
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="style.css" />
 		<style>
-		footer {
+			/* small page-specific styles kept local so file is standalone */
+			footer {
 				background: #0099FF;
-				color: #00F549;
+				color: #004d00; /* improved contrast for accessibility */
 				text-align: center;
 				padding: 20px;
 				margin-top: 50px;
 			}
+
+			/* modal / lightbox styles */
+			#successModal {
+				position: fixed;
+				inset: 0;
+				display: none; /* hidden by default */
+				align-items: center;
+				justify-content: center;
+				background: rgba(0,0,0,0.5);
+				z-index: 60;
+			}
+			#successModal.open { display: flex; }
+
+			.modal-panel {
+				background: #fff;
+				color: #111827;
+				padding: 1.25rem;
+				border-radius: 0.5rem;
+				max-width: 420px;
+				width: 90%;
+				box-shadow: 0 10px 25px rgba(2,6,23,0.2);
+				animation: pop 220ms ease;
+			}
+			@keyframes pop {
+				from { opacity: 0; transform: translateY(6px) scale(0.98); }
+				to   { opacity: 1; transform: translateY(0) scale(1); }
+			}
+
+			/* small focus outline improvements */
+			:focus { outline: 3px solid rgba(59,130,246,0.35); outline-offset: 2px; }
+
+			/* loading spinner (text fallback) */
+			.spinner { display:inline-block; width:18px; height:18px; border:2px solid #cbd5e1; border-top-color:#0ea5e9; border-radius:50%; animation:spin 0.8s linear infinite; vertical-align:middle; margin-right:8px; }
+			@keyframes spin { to { transform: rotate(360deg); } }
 		</style>
-		</head>
-	
-		<body class="bg-gray-50 text-gray-800">
-		<header class="bg-gradient-to-r from-blue-600 to-green-500 text-white">		
-		<div class="max-w-7xl mx-auto flex items-center justify-between py-4 px-6">
-		<div class="flex items-center space-x-2">
-		<div class="bg-white text-blue-600 font-bold rounded-full w-8 h-8 flex items-center justify-center">B&B</div>
-		<span class="font-semibold text-lg">Books and Balls Initiative</span>
-		 </div>
-		 
-		<nav class="space-x-4 site-nav">
-			<a href="Home page.html" class="hover:underline">Home</a>
-			<a href="About page.html" class="hover:underline">About</a>
-			<a href="Services.html" class="hover:underline">Services</a>
-			<a href="Sponser page.html" class="hover:underline">Sponsor</a>
-			<a href="Contact page.html" class="hover:underline">Contact</a>
-			<a href="Donate.html" class="font-semibold bg-white text-blue-600 px-3 py-1 rounded" aria-current="page">Donate</a>
-		</nav>
-		</div>
+	</head>
+
+	<body class="bg-gray-50 text-gray-800">
+		<header class="bg-gradient-to-r from-blue-600 to-green-500 text-white">
+			<div class="max-w-7xl mx-auto flex items-center justify-between py-4 px-6">
+				<div class="flex items-center space-x-2">
+					<div class="bg-white text-blue-600 font-bold rounded-full w-8 h-8 flex items-center justify-center">B&B</div>
+					<span class="font-semibold text-lg">Books and Balls Initiative</span>
+				</div>
+
+				<nav class="space-x-4 site-nav" aria-label="Main navigation">
+					<a href="Home page.html" class="hover:underline">Home</a>
+					<a href="About page.html" class="hover:underline">About</a>
+					<a href="Services.html" class="hover:underline">Services</a>
+					<a href="Sponser page.html" class="hover:underline">Sponsor</a>
+					<a href="Contact page.html" class="hover:underline">Contact</a>
+					<a href="Donate.html" class="font-semibold bg-white text-blue-600 px-3 py-1 rounded" aria-current="page">Donate</a>
+				</nav>
+			</div>
 		</header>
-				<section class="page-intro">
-						<h1 class="page-title">Support Our Mission</h1>
-						<p>Your donation helps us change lives</p>
-				</section>
 
-				<main class="card inner-wrap narrow">
-				<h2 class="text-center page-subtitle">Donate Now</h2>
-				<p class="text-center">Every contribution makes a difference in the lives of children in need.</p>
-				<br/>
+		<section class="page-intro max-w-4xl mx-auto text-center py-8 px-4" aria-labelledby="intro-heading">
+			<h1 id="intro-heading" class="page-title text-3xl font-bold">Support Our Mission</h1>
+			<p class="mt-2">Your donation helps us change lives by providing books and sporting equipment to children in need.</p>
+		</section>
 
-				<form class="form-vertical">
-					<label>
-						Full Name:
-						<input type="text" name="name" required>
-					</label>
+		<main class="card inner-wrap narrow max-w-3xl mx-auto bg-white p-6 rounded shadow" id="main" role="main">
+			<h2 class="text-center page-subtitle text-2xl font-semibold">Donate Now</h2>
+			<p class="text-center">Every contribution makes a difference in the lives of children in need.</p>
+			<br/>
 
-					<label>
-						Email:
-						<input type="email" name="email" required>
-					</label>
+			<form id="donationForm" class="form-vertical space-y-4" action="#" method="post" novalidate aria-describedby="donationHelp">
+				<div>
+					<label for="donor-name" class="block text-sm font-medium">Full Name</label>
+					<input id="donor-name" type="text" name="name" required minlength="3" aria-required="true"
+						class="mt-1 block w-full border border-gray-300 rounded p-2"
+						placeholder="Your full name" />
+					<p id="nameHint" class="sr-only">Minimum 3 characters.</p>
+				</div>
 
-					<label>
-						Donation Amount (ZAR):
-						<input type="number" name="amount" required>
-					</label>
+				<div>
+					<label for="donor-email" class="block text-sm font-medium">Email</label>
+					<input id="donor-email" type="email" name="email" required aria-required="true"
+						class="mt-1 block w-full border border-gray-300 rounded p-2"
+						placeholder="you@example.com" />
+				</div>
 
-					<button type="submit" class="btn btn-accent">
+				<div>
+					<label for="donation-amount" class="block text-sm font-medium">Donation Amount (ZAR)</label>
+					<input id="donation-amount" type="number" name="amount" required min="10" step="1" value="50"
+						class="mt-1 block w-full border border-gray-300 rounded p-2"
+						aria-describedby="amountHelp" />
+					<p id="amountHelp" class="text-xs text-gray-500 mt-1">Minimum ZAR 10. Enter numbers only.</p>
+				</div>
+
+				<div>
+					<label for="donor-message" class="block text-sm font-medium">Message (optional)</label>
+					<textarea id="donor-message" name="message" rows="3" class="mt-1 block w-full border border-gray-300 rounded p-2" placeholder="Optional message..."></textarea>
+				</div>
+
+				<div id="formError" class="text-red-600 text-sm hidden" role="alert" aria-live="assertive"></div>
+
+				<div class="flex gap-3">
+					<button id="donateBtn" type="submit" class="btn btn-accent flex-1 bg-blue-600 text-white px-4 py-2 rounded">
 						Donate
 					</button>
-				</form>
-				</main>
+					<button id="clearBtn" type="button" class="bg-gray-200 px-4 py-2 rounded">Clear</button>
+				</div>
 
-		<footer class="bg-blue-500 text-green-400 text-center py-6 mt-10">
+				<div id="donationLoading" class="text-sm text-gray-600 hidden" aria-hidden="true">
+					<span class="spinner" aria-hidden="true"></span>Processing your donation...
+				</div>
+			</form>
+		</main>
+
+		<div id="successModal" role="dialog" aria-modal="true" aria-labelledby="successTitle" aria-hidden="true">
+			<div class="modal-panel">
+				<h3 id="successTitle" class="text-xl font-semibold text-green-600">Donation Successful</h3>
+				<p class="mt-2">Thank you for supporting Books and Balls Initiative! A confirmation will be emailed if you provided an address.</p>
+				<div class="mt-4 flex justify-end">
+					<button id="successClose" class="bg-blue-600 text-white px-4 py-2 rounded">Close</button>
+				</div>
+			</div>
+		</div>
+
+		<footer class="bg-blue-600 text-green-500 text-center py-6 mt-10">
 			&copy; 2025 Books and Balls Initiative. All rights reserved.
 		</footer>
-		</body>
 
-	</html>
+		<script>
+			/* Donate.html — Part 3 required behaviors:
+			 * - HTML5 validation + JS validation
+			 * - AJAX submission (simulated)
+			 * - Error handling and success modal (accessible)
+			 * - Minimal DOM changes so structure remains similar
+			 */
+
+			(function () {
+				// Elements
+				const form = document.getElementById('donationForm');
+				const nameInput = document.getElementById('donor-name');
+				const emailInput = document.getElementById('donor-email');
+				const amountInput = document.getElementById('donation-amount');
+				const messageInput = document.getElementById('donor-message');
+				const errorBox = document.getElementById('formError');
+				const loading = document.getElementById('donationLoading');
+				const modal = document.getElementById('successModal');
+				const modalClose = document.getElementById('successClose');
+				const clearBtn = document.getElementById('clearBtn');
+				const donateBtn = document.getElementById('donateBtn');
+
+				// Utility functions
+				function showError(msg) {
+					errorBox.textContent = msg;
+					errorBox.classList.remove('hidden');
+					errorBox.setAttribute('aria-hidden', 'false');
+				}
+				function hideError() {
+					errorBox.textContent = '';
+					errorBox.classList.add('hidden');
+					errorBox.setAttribute('aria-hidden', 'true');
+				}
+				function showLoading() {
+					loading.classList.remove('hidden');
+					loading.setAttribute('aria-hidden', 'false');
+					donateBtn.disabled = true;
+				}
+				function hideLoading() {
+					loading.classList.add('hidden');
+					loading.setAttribute('aria-hidden', 'true');
+					donateBtn.disabled = false;
+				}
+				function openModal() {
+					modal.classList.add('open');
+					modal.setAttribute('aria-hidden', 'false');
+					// focus the close button for keyboard users
+					modalClose.focus();
+					// trap focus (basic)
+					document.addEventListener('focus', trapFocus, true);
+					// prevent scrolling
+					document.body.style.overflow = 'hidden';
+				}
+				function closeModal() {
+					modal.classList.remove('open');
+					modal.setAttribute('aria-hidden', 'true');
+					document.removeEventListener('focus', trapFocus, true);
+					document.body.style.overflow = '';
+					// return focus to submit button
+					donateBtn.focus();
+				}
+				function trapFocus(e) {
+					if (!modal.contains(e.target)) {
+						e.stopPropagation();
+						modalClose.focus();
+					}
+				}
+
+				// Basic email regex for client-side validation (not perfect but okay for UI)
+				function isValidEmail(email) {
+					return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+				}
+
+				// Form submit handler (AJAX simulated)
+				form.addEventListener('submit', function (ev) {
+					ev.preventDefault();
+					hideError();
+
+					const name = nameInput.value.trim();
+					const email = emailInput.value.trim();
+					const amount = Number(amountInput.value);
+					const message = messageInput.value.trim();
+
+					// HTML5 validity check first
+					if (!form.checkValidity()) {
+						// Let browser show native validation UI for required/min attributes,
+						// but also display friendly message here for screen reader users.
+						showError('Please complete the highlighted fields correctly before submitting.');
+						return;
+					}
+
+					// Additional JS checks
+					if (name.length < 3) {
+						showError('Name must be at least 3 characters.');
+						nameInput.focus();
+						return;
+					}
+					if (!isValidEmail(email)) {
+						showError('Please enter a valid email address.');
+						emailInput.focus();
+						return;
+					}
+					if (Number.isNaN(amount) || amount < 10) {
+						showError('Minimum donation amount is ZAR 10.');
+						amountInput.focus();
+						return;
+					}
+
+					// Passed validation — simulate AJAX submission
+					showLoading();
+
+					// Example payload (would be posted to a server endpoint in a real app)
+					const payload = {
+						name: name,
+						email: email,
+						amount: amount,
+						message: message,
+						timestamp: new Date().toISOString()
+					};
+
+					// Simulate network latency and success/failure outcome
+					setTimeout(() => {
+						// simulate success 95% of the time
+						const success = Math.random() < 0.95;
+						hideLoading();
+
+						if (success) {
+							// Reset form and show modal
+							form.reset();
+							openModal();
+							// (In production, send confirmation email from server)
+							console.log('Simulated submission payload:', payload);
+						} else {
+							showError('Submission failed — please try again later.');
+						}
+					}, 800);
+				});
+
+				// clear/reset button
+				clearBtn.addEventListener('click', function () {
+					form.reset();
+					hideError();
+					nameInput.focus();
+				});
+
+				// modal close handlers
+				modalClose.addEventListener('click', closeModal);
+				modal.addEventListener('click', function (ev) {
+					// clicking on overlay closes modal
+					if (ev.target === modal) closeModal();
+				});
+				document.addEventListener('keydown', function (ev) {
+					if (ev.key === 'Escape' && modal.classList.contains('open')) {
+						closeModal();
+					}
+				});
+
+				// progressive enhancement: if JS disabled then the form still has HTML5 validation
+			})();
+		</script>
+	</body>
+</html>

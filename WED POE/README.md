@@ -62,4 +62,31 @@ npm run screenshots
 
 This will create a `screenshots/` folder with PNG files for each page at three breakpoints.
 
+Part 3 — Functionality & SEO
+
+2025-11-13: Part 3 - Implemented JavaScript enhancements and SEO improvements.
+
+- Added `main.js`: centralised interactive features including:
+  - Accordion safety/keyboard handling (used on `Home page.html`).
+  - Services search filter wired to `Services.html` (`#serviceSearch`).
+  - Lightbox modal for sponsor images (images marked with `data-lightbox="true"` in `Sponser page.html`).
+  - Enquiries form validation and AJAX-like submission handling (`Enquiries.html`).
+- Updated pages to include `main.js` and removed deprecated tags and inline styles where appropriate.
+- Added `robots.txt` and `sitemap.xml` (placeholders — update URLs to your live site).
+
+Files updated for Part 3:
+- `main.js` (new)
+- `Enquiries.html` (form validation + AJAX handling)
+- `Services.html` (search input + linked main.js)
+- `Sponser page.html` (lightbox attributes + linked main.js)
+- `Contact page.html` (linked main.js; contact form retained and still supports AJAX/mailto)
+- `Home page.html`, `About page.html`, `Donate.html` (linked `main.js`)
+- `robots.txt`, `sitemap.xml`
+
+Notes about feedback from Part 2
+- Fixed multiple instances of deprecated `<font>` tags and removed inline style attributes to centralise styling in `style.css`.
+- Improved header/nav consistency and added ARIA attributes where helpful (`aria-current` set on active nav links).
+- Added changelog entries and a screenshots helper to capture responsive evidence.
+
+
 

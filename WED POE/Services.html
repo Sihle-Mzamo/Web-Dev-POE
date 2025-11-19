@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-	
 	<html lang="en">
-		
-		<head>
-			<meta charset="UTF-8">
-			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<title>Services — Books and Balls Initiative</title>
-			<script src="https://cdn.tailwindcss.com"></script>
-			<meta name="description" content="Our services: education support, nutrition program and sports empowerment">
-			<link rel="stylesheet" href="style.css">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Services — Books and Balls Initiative</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<meta name="description" content="Our services: education support, nutrition program and sports empowerment">
+		<link rel="stylesheet" href="style.css">
 		<style>
-		footer {
+			footer {
 				background: #0099FF;
 				color: #00F549;
 				text-align: center;
@@ -18,56 +17,98 @@
 				margin-top: 50px;
 			}
 		</style>
-		</head>
-		
-		<body class="bg-gray-50 text-gray-800">
+	</head>
+
+	<body class="bg-gray-50 text-gray-800">
+
 		<header class="bg-gradient-to-r from-blue-600 to-green-500 text-white">
-		<div class="max-w-7xl mx-auto flex items-center justify-between py-4 px-6">
-		<div class="flex items-center space-x-2">
-		<div class="bg-white text-blue-600 font-bold rounded-full w-8 h-8 flex items-center justify-center">B&B</div>
-		<span class="font-semibold text-lg">Books and Balls Initiative</span>
-		 </div>
-		 
-		<nav class="space-x-4 site-nav">
-			<a href="Home page.html" class="hover:underline">Home</a>
-			<a href="About page.html" class="hover:underline">About</a>
-			<a href="Services.html" class="font-semibold bg-white text-blue-600 px-3 py-1 rounded" aria-current="page">Services</a>
-			<a href="Sponser page.html" class="hover:underline">Sponsor</a>
-			<a href="Contact page.html" class="hover:underline">Contact</a>
-			<a href="Donate.html" class="hover:underline">Donate</a>
-		</nav>
-		</div>
+			<div class="max-w-7xl mx-auto flex items-center justify-between py-4 px-6">
+				<div class="flex items-center space-x-2">
+					<div class="bg-white text-blue-600 font-bold rounded-full w-8 h-8 flex items-center justify-center">B&B</div>
+					<span class="font-semibold text-lg">Books and Balls Initiative</span>
+				</div>
+				<nav class="space-x-4 site-nav">
+					<a href="Home page.html" class="hover:underline">Home</a>
+					<a href="About page.html" class="hover:underline">About</a>
+					<a href="Services.html" class="font-semibold bg-white text-blue-600 px-3 py-1 rounded" aria-current="page">Services</a>
+					<a href="Sponser page.html" class="hover:underline">Sponsor</a>
+					<a href="Contact page.html" class="hover:underline">Contact</a>
+					<a href="Donate.html" class="hover:underline">Donate</a>
+				</nav>
+			</div>
 		</header>
-		
-		<section class="page-intro">
-			<h1 class="page-title">Our Services</h1>
-			<p class="text-center">We provide a range of support including education, nutrition and sports programs.</p>
+
+		<section class="page-intro text-center py-10">
+			<h1 class="text-3xl font-bold mb-4">Our Services</h1>
+			<p class="text-gray-700 max-w-2xl mx-auto">We provide a range of support including education, nutrition, and sports programs.</p>
 		</section>
 
-		<div class="inner-wrap">
+		<div class="max-w-6xl mx-auto px-4 mb-6 flex flex-col md:flex-row md:justify-between gap-4">
+			<input id="serviceSearch" type="text" placeholder="Search services..."
+				class="border p-2 rounded w-full md:w-1/2" />
 
-			<div class="service-card card">
-				<h2>📘 Education Support</h2>
-				<p>We provide tutoring and free lessons to children in orphanages and underprivileged communities.</p>
-				<img class="responsive-media" src="edu.jpg" srcset="edu.jpg 1x" sizes="(max-width:600px) 100vw, 600px" alt="Education Program">
+			<button id="toggleView"
+				class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+				Toggle List/Grid View
+			</button>
+		</div>
+
+		<div id="servicesContainer"
+			class="inner-wrap max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-8">
+
+			<div class="service-card bg-white shadow-lg rounded-lg p-6 hover:shadow-2xl transition-shadow duration-300"
+				data-name="education tutoring learning school lessons">
+				<h2 class="text-xl font-semibold mb-2">📘 Education Support</h2>
+				<p class="text-gray-700 mb-4">We provide tutoring and free lessons to children in orphanages and underprivileged communities.</p>
+				<img class="w-full h-auto rounded" src="edu.jpg" alt="Children receiving educational support">
 			</div>
 
-			<div class="service-card card">
-				<h2>🥗 Nutrition Program</h2>
-				<p>We partner with sponsors to provide healthy meals and food parcels to children in need.</p>
-				<img class="responsive-media" src="nutri.jpg" srcset="nutri.jpg 1x" sizes="(max-width:600px) 100vw, 600px" alt="Nutrition Program">
+			<div class="service-card bg-white shadow-lg rounded-lg p-6 hover:shadow-2xl transition-shadow duration-300"
+				data-name="nutrition food meals support health">
+				<h2 class="text-xl font-semibold mb-2">🥗 Nutrition Program</h2>
+				<p class="text-gray-700 mb-4">We partner with sponsors to provide healthy meals and food parcels to children in need.</p>
+				<img class="w-full h-auto rounded" src="nutri.jpg" alt="Healthy meals provided to children">
 			</div>
 
-			<div class="service-card card">
-				<h2>⚽ Sports & Empowerment</h2>
-				<p>We use sports to keep kids active, away from crime, and to teach teamwork, discipline, and confidence.</p>
-				<img class="responsive-media" src="SE.jpeg" srcset="SE.jpeg 1x" sizes="(max-width:600px) 100vw, 600px" alt="Sports Program">
+			<div class="service-card bg-white shadow-lg rounded-lg p-6 hover:shadow-2xl transition-shadow duration-300"
+				data-name="sports empowerment soccer activity youth discipline">
+				<h2 class="text-xl font-semibold mb-2">⚽ Sports & Empowerment</h2>
+				<p class="text-gray-700 mb-4">We use sports to keep kids active, away from crime, and to teach teamwork, discipline, and confidence.</p>
+				<img class="w-full h-auto rounded" src="SE.jpeg" alt="Children playing sports">
 			</div>
 
-			</div>
-		<footer class="bg-blue-500 text-green-400 text-center py-6 mt-10">
+		</div>
+
+		<footer class="bg-blue-600 text-green-500 text-center py-6 mt-10">
 			&copy; 2025 Books and Balls Initiative. All rights reserved.
 		</footer>
-		</body>
-			
-	</html>
+
+		<script>
+			// Live Search Filter
+			const searchInput = document.getElementById("serviceSearch");
+			const cards = document.querySelectorAll(".service-card");
+
+			searchInput.addEventListener("keyup", () => {
+				const value = searchInput.value.toLowerCase();
+
+				cards.forEach(card => {
+					const keywords = card.dataset.name.toLowerCase();
+					card.style.display = keywords.includes(value) ? "block" : "none";
+				});
+			});
+
+			// Toggle between grid and list view
+			const container = document.getElementById("servicesContainer");
+			const toggleBtn = document.getElementById("toggleView");
+
+			toggleBtn.addEventListener("click", () => {
+				container.classList.toggle("grid");
+				container.classList.toggle("md:grid-cols-3");
+				container.classList.toggle("flex");
+				container.classList.toggle("flex-col");
+			});
+		</script>
+
+	</body>
+
+</html>

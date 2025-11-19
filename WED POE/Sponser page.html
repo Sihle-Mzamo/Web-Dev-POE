@@ -1,114 +1,434 @@
-<!DOCTYPE html>
-	
-	<html lang="en">
-		
-		<head>
-			<meta charset="UTF-8">
-			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<title>NPO: Website</title>
-			<script src="https://cdn.tailwindcss.com"></script>
-			<meta name="description" content="Our sponsors — organisations supporting Books and Balls Initiative">
-			<link rel="stylesheet" href="style.css">
-		<style>
+<!doctype html>
+<html lang="en">
+	<head>
+	  <meta charset="utf-8" />
+	  <meta name="viewport" content="width=device-width,initial-scale=1" />
+	  <title>Books and Balls Initiative — Sponsors</title>
+	  <meta name="description" content="Books &amp; Balls Initiative — Our corporate and community sponsors (Coca-Cola, Checkers, Shoprite) supporting youth education and sports." />
+	  <link rel="canonical" href="https://example.org/Sponser%20page.html" />
 
-			.sponsor-section {
-			  padding: 40px;
-			  text-align: center;
-			}
+	  <meta property="og:title" content="Books and Balls Initiative — Sponsors" />
+	  <meta property="og:description" content="Our corporate and community sponsors supporting youth education and sports." />
+	  <meta property="og:type" content="website" />
+	  <meta property="og:image" content="https://example.org/assets/og-sponsors.jpg" />
 
-			.sponsor-section h2 {
-			  margin-bottom: 20px;
-			  font-size: 2em;
-			  color: #00F549;
-			}
+	  <meta name="robots" content="index, follow" />
 
-			.sponsor-grid {
-			  display: grid;
-			  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-			  gap: 20px;
-			  max-width: 1200px;
-			  margin: auto;
-			}
+	  <script type="application/ld+json">
+	  {
+		"@context": "https://schema.org",
+		"@type": "Organization",
+		"name": "Books and Balls Initiative",
+		"url": "https://example.org",
+		"logo": "https://example.org/assets/logo.png",
+		"sameAs": [
+		  "https://facebook.com/example",
+		  "https://twitter.com/example"
+		],
+		"description": "Non-profit supporting youth education and community sports."
+	  }
+	  </script>
 
-			.sponsor-card {
-			  background: white;
-			  border-radius: 10px;
-			  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-			  padding: 20px;
-			}
+	  <script src="https://cdn.tailwindcss.com"></script>
 
-			.sponsor-card img {
-			  max-width: 100%;
-			  height: auto;
-			  border-radius: 6px;
-			}
+	  <style>
+		/* Keep your color choices and feel similar to original */
+		:root {
+		  --accent: #00F549;
+		  --brand-blue: #0099FF;
+		  --nav-blue: #0ea5e9;
+		}
 
-			.sponsor-card h3 {
-			  margin: 15px 0 10px;
-			  color: #00F549;
-			}
+		html,body { height:100%; }
+		body { font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:#f8fafc; color:#0f172a; -webkit-font-smoothing:antialiased; }
 
-			
-			footer {
-				background: #0099FF;
-				color: #00F549;
-				text-align: center;
-				padding: 20px;
-				margin-top: 50px;
-			}
-		</style>
-		</head>
-		<body class="bg-gray-50 text-gray-800">
-		<header class="bg-gradient-to-r from-blue-600 to-green-500 text-white">
+		header { background: linear-gradient(90deg,var(--nav-blue), #10b981); color:white; }
+		.logo-pill { background:white; color: #0ea5e9; font-weight:700; border-radius:9999px; width:40px; height:40px; display:flex; align-items:center; justify-content:center; }
+
+		.page-intro { text-align:center; padding:2rem 1rem; }
+		.page-title { font-size:1.75rem; font-weight:700; margin-bottom:0.25rem; }
+		.page-sub { color:#475569; }
+
+		.sponsor-section { padding:1.5rem; max-width:1100px; margin:0 auto; }
+
+		.sponsor-grid { display:grid; gap:1.1rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+
+		.sponsor-card {
+		  background: #fff;
+		  border-radius:12px;
+		  box-shadow: 0 6px 18px rgba(2,6,23,0.06);
+		  padding:1rem;
+		  display:flex;
+		  flex-direction:column;
+		  transition: transform .18s ease, box-shadow .18s ease;
+		}
+		.sponsor-card:focus-within,
+		.sponsor-card:hover { transform: translateY(-6px); box-shadow: 0 12px 26px rgba(2,6,23,0.12); }
+
+		.sponsor-thumb { width:100%; border-radius:8px; overflow:hidden; display:block; background:#eef2ff; }
+		.sponsor-thumb img { display:block; width:100%; height:160px; object-fit:cover; }
+
+		.sponsor-title { margin-top:0.6rem; font-weight:600; color:var(--nav-blue); }
+		.sponsor-desc { color:#475569; font-size:0.95rem; margin-top:0.35rem; flex:1; }
+
+		.sponsor-meta { display:flex; justify-content:space-between; align-items:center; margin-top:0.75rem; gap:0.5rem; }
+
+		.btn { background:white; border:1px solid #e6edf3; padding:0.45rem 0.6rem; border-radius:8px; cursor:pointer; }
+		.btn:focus { outline:3px solid rgba(14,165,233,0.15); outline-offset:2px; }
+
+		/* Search row */
+		.search-row { display:flex; gap:0.6rem; align-items:center; justify-content:flex-end; margin-bottom:0.75rem; flex-wrap:wrap; }
+
+		/* Lightbox (image viewer) */
+		.overlay { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(2,6,23,0.6); z-index:60; padding:1rem; }
+		.lightbox { background:white; border-radius:8px; max-width:1000px; width:100%; max-height:90vh; overflow:auto; padding:1rem; box-shadow:0 12px 40px rgba(2,6,23,0.4); }
+		.lightbox img { width:100%; height:auto; display:block; border-radius:6px; }
+
+		/* Modal (details) */
+		.modal { background:white; border-radius:8px; max-width:700px; width:100%; max-height:90vh; overflow:auto; padding:1rem; }
+
+		.visually-hidden { position:absolute !important; height:1px; width:1px; overflow:hidden; clip:rect(1px,1px,1px,1px); white-space:nowrap; border:0; padding:0; margin:-1px; }
+
+		footer { background:var(--brand-blue); color:var(--accent); text-align:center; padding:1.25rem; margin-top:2rem; }
+
+		/* small responsive tweaks */
+		@media (min-width: 768px) {
+		  .sponsor-thumb img { height:180px; }
+		}
+	  </style>
+	</head>
+	<body>
+
+	  <header>
 		<div class="max-w-7xl mx-auto flex items-center justify-between py-4 px-6">
-		<div class="flex items-center space-x-2">
-		<div class="bg-white text-blue-600 font-bold rounded-full w-8 h-8 flex items-center justify-center">B&B</div>
-		<span class="font-semibold text-lg">Books and Balls Initiative</span>
+		  <div class="flex items-center space-x-3">
+			<div class="logo-pill">B&B</div>
+			<div>
+			  <div class="font-semibold text-lg">Books and Balls Initiative</div>
+			  <div class="text-sm opacity-90">Community education &amp; sports programs</div>
+			</div>
+		  </div>
+
+		  <nav class="hidden md:flex items-center space-x-4" aria-label="Main navigation">
+			<a class="hover:underline" href="Home page.html">Home</a>
+			<a class="hover:underline" href="About page.html">About</a>
+			<a class="hover:underline" href="Services.html">Services</a>
+			<a class="font-semibold bg-white text-blue-600 px-3 py-1 rounded" aria-current="page" href="Sponser page.html">Sponsor</a>
+			<a class="hover:underline" href="Contact page.html">Contact</a>
+			<a class="hover:underline" href="Donate.html">Donate</a>
+		  </nav>
 		</div>
-		<nav class="space-x-4 site-nav">
-			<a href="Home page.html" class="hover:underline">Home</a>
-			<a href="About page.html" class="hover:underline">About</a>
-			<a href="Services.html" class="hover:underline">Services</a>
-			<a href="Sponser page.html" class="font-semibold bg-white text-blue-600 px-3 py-1 rounded" aria-current="page">Sponsor</a>
-			<a href="Contact page.html" class="hover:underline">Contact</a>
-			<a href="Donate.html" class="hover:underline">Donate</a>
-		</nav>
-		</div>
-		</header>
+	  </header>
+
+	  <main>
 		<section class="page-intro">
-			<h1 class="page-title">Our Sponsors</h1>
-			<p>We are grateful for the support of our partners</p>
+		  <h1 class="page-title">Our Sponsors</h1>
+		  <p class="page-sub">We are grateful for the support of our partners helping us bring education and sport to the community.</p>
 		</section>
 
-		<section class="sponsor-section">
-			<h2 class="page-subtitle">Corporate Sponsors</h2>
-		<div class="sponsor-grid">
-		<div class="sponsor-card">
-			<img src="coca-cola.jpg" alt="Coca-Cola Logo">
-			<h3>Coca-Cola</h3>
-			<p>Provided beverages and supported community sports events.</p>
-			<img src="cc.jpg" alt="Coca-Cola Community Event">
-		</div>
+		<section class="sponsor-section" aria-labelledby="sponsorsHeading">
+		  <div class="flex items-start justify-between gap-4 mb-4 flex-col md:flex-row">
+			<div>
+			  <h2 id="sponsorsHeading" class="text-xl font-semibold">Corporate Sponsors</h2>
+			  <p class="text-sm text-gray-600">Click an image to open the gallery. Click "Details" to learn more about each sponsor.</p>
+			</div>
 
-		<div class="sponsor-card">
-		  <img src="c n s.png" alt="Checkers Logo">
-		  <h3>Checkers</h3>
-		  <p>Donated food parcels and groceries for children.</p>
-		  <img src="c n s.jpg" alt="Checkers Food Donation">
-		</div>
+			<div class="search-row" role="search" aria-label="Search sponsors">
+			  <label for="search" class="visually-hidden">Search sponsors</label>
+			  <input id="search" type="search" placeholder="Search sponsors (name or description)" class="px-3 py-2 rounded border" />
+			  <button id="resetBtn" class="btn" type="button">Reset</button>
+			</div>
+		  </div>
 
-		<div class="sponsor-card">
-		  <img src="R.jpg" alt="Shoprite Logo">
-		  <h3>Shoprite</h3>
-		  <p>Supported with sports equipment and meal programs.</p>
-		  <img src="maxresdefault.jpg" alt="Shoprite Kids Support">
-		</div>
-		</div>
+		  <div id="sponsorGrid" class="sponsor-grid" aria-live="polite">
+		  </div>
 		</section>
+	  </main>
 
-		<footer class="bg-blue-500 text-green-400 text-center py-6 mt-10">
-			&copy; 2025 Books and Balls Initiative. All rights reserved.
-		</footer>
-		</body>
-			
-	</html>		
+	  <div id="lightboxOverlay" class="hidden" role="dialog" aria-modal="true" aria-labelledby="lightboxTitle">
+		<div class="overlay" tabindex="-1">
+		  <div class="lightbox" role="document">
+			<div style="display:flex; justify-content:space-between; align-items:center; gap:0.5rem;">
+			  <h3 id="lightboxTitle" class="text-lg font-semibold">Image viewer</h3>
+			  <div>
+				<button id="lightboxClose" class="btn" aria-label="Close image viewer">Close</button>
+			  </div>
+			</div>
+			<div style="margin-top:0.75rem;">
+			  <img id="lightboxImage" src="" alt="" />
+			  <p id="lightboxCaption" class="text-sm text-gray-600" style="margin-top:0.5rem;"></p>
+			</div>
+		  </div>
+		</div>
+	  </div>
+
+	  <div id="detailOverlay" class="hidden" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+		<div class="overlay" tabindex="-1">
+		  <div class="modal" role="document">
+			<div style="display:flex; justify-content:space-between; align-items:center; gap:0.5rem;">
+			  <h3 id="detailTitle" class="text-xl font-semibold">Sponsor details</h3>
+			  <div>
+				<button id="detailClose" class="btn" aria-label="Close details modal">Close</button>
+			  </div>
+			</div>
+
+			<div id="detailBody" style="margin-top:0.75rem;">
+
+			</div>
+		  </div>
+		</div>
+	  </div>
+
+	  <footer class="mt-8">
+		<div class="max-w-7xl mx-auto px-4">
+		  &copy; <span id="year"></span> Books and Balls Initiative. All rights reserved.
+		</div>
+	  </footer>
+
+	  <script>
+		// Fill footer year
+		document.getElementById('year').textContent = new Date().getFullYear();
+
+		/******************************
+		 * Sponsors data (3 sponsors)
+		 * - kept to the same images/names you used originally
+		 * - dynamic content for Part 3 requirements
+		 ******************************/
+		const sponsors = [
+		  {
+			id: "coca-cola",
+			name: "Coca-Cola",
+			image: "coca-cola.jpg",
+			image2: "cc.jpg", // secondary photo you provided originally
+			alt: "Coca-Cola community event and logo",
+			short: "Provided beverages and supported community sports events.",
+			details: "Coca-Cola supported local sports days, supplied drinks for events, and provided event logistics support. They helped with hydration stations during tournaments and contributed promotional material for community outreach.",
+			website: "https://www.coca-cola.com"
+		  },
+		  {
+			id: "checkers",
+			name: "Checkers",
+			image: "c n s.png",
+			image2: "c n s.jpg",
+			alt: "Checkers food donation event",
+			short: "Donated food parcels and groceries for children.",
+			details: "Checkers partnered with our program to provide monthly food parcels for participating families and supported back-to-school drives with food and essentials.",
+			website: "https://www.checkers.co.za"
+		  },
+		  {
+			id: "shoprite",
+			name: "Shoprite",
+			image: "R.jpg",
+			image2: "maxresdefault.jpg",
+			alt: "Shoprite support for youth programs",
+			short: "Supported with sports equipment and meal programs.",
+			details: "Shoprite donated sports equipment and contributed to meal programs during community events, helping young athletes access nutritious food and safe play equipment.",
+			website: "https://www.shoprite.co.za"
+		  }
+		];
+
+		/******************************
+		 * Render grid dynamically
+		 ******************************/
+		const sponsorGrid = document.getElementById('sponsorGrid');
+
+		function createSponsorCard(s) {
+		  const article = document.createElement('article');
+		  article.className = 'sponsor-card';
+		  article.setAttribute('data-id', s.id);
+		  article.setAttribute('data-name', s.name.toLowerCase());
+		  article.setAttribute('data-short', s.short.toLowerCase());
+
+		  // image button (opens lightbox)
+		  const imgButton = document.createElement('button');
+		  imgButton.type = 'button';
+		  imgButton.className = 'sponsor-thumb';
+		  imgButton.setAttribute('aria-label', `Open image for ${s.name}`);
+		  imgButton.addEventListener('click', () => openLightbox(s));
+
+		  const img = document.createElement('img');
+		  img.src = s.image;
+		  img.alt = s.alt || s.name;
+		  img.loading = 'lazy';
+		  img.width = 800;
+		  imgButton.appendChild(img);
+
+		  // Title and description
+		  const title = document.createElement('h3');
+		  title.className = 'sponsor-title';
+		  title.textContent = s.name;
+
+		  const desc = document.createElement('p');
+		  desc.className = 'sponsor-desc';
+		  desc.textContent = s.short;
+
+		  // Actions: Details (opens modal) and View Image (same as clicking image)
+		  const meta = document.createElement('div');
+		  meta.className = 'sponsor-meta';
+
+		  const detailsBtn = document.createElement('button');
+		  detailsBtn.className = 'btn';
+		  detailsBtn.type = 'button';
+		  detailsBtn.textContent = 'Details';
+		  detailsBtn.setAttribute('aria-haspopup', 'dialog');
+		  detailsBtn.addEventListener('click', () => openDetailsModal(s));
+
+		  const viewBtn = document.createElement('button');
+		  viewBtn.className = 'btn';
+		  viewBtn.type = 'button';
+		  viewBtn.textContent = 'View Image';
+		  viewBtn.addEventListener('click', () => openLightbox(s));
+
+		  meta.appendChild(detailsBtn);
+		  meta.appendChild(viewBtn);
+
+		  article.appendChild(imgButton);
+		  article.appendChild(title);
+		  article.appendChild(desc);
+		  article.appendChild(meta);
+
+		  return article;
+		}
+
+		function renderGrid(list) {
+		  sponsorGrid.innerHTML = '';
+		  if (list.length === 0) {
+			const p = document.createElement('p');
+			p.className = 'text-sm text-gray-600';
+			p.textContent = 'No sponsors match your search.';
+			sponsorGrid.appendChild(p);
+			return;
+		  }
+		  const fragment = document.createDocumentFragment();
+		  list.forEach(s => fragment.appendChild(createSponsorCard(s)));
+		  sponsorGrid.appendChild(fragment);
+		}
+
+		// Initial render
+		renderGrid(sponsors);
+
+		/******************************
+		 * Lightbox: image viewer
+		 ******************************/
+		const lightboxOverlay = document.getElementById('lightboxOverlay');
+		const lightboxImage = document.getElementById('lightboxImage');
+		const lightboxCaption = document.getElementById('lightboxCaption');
+		const lightboxClose = document.getElementById('lightboxClose');
+		let lastFocusedElement = null;
+
+		function openLightbox(s) {
+		  lastFocusedElement = document.activeElement;
+		  lightboxImage.src = s.image2 || s.image;
+		  lightboxImage.alt = s.alt || s.name;
+		  lightboxCaption.textContent = s.name + " — " + (s.short || '');
+		  lightboxOverlay.classList.remove('hidden');
+		  // prevent background scroll
+		  document.body.style.overflow = 'hidden';
+		  lightboxClose.focus();
+		  document.addEventListener('keydown', onLightboxKey);
+		}
+
+		function closeLightbox() {
+		  lightboxOverlay.classList.add('hidden');
+		  lightboxImage.src = '';
+		  document.body.style.overflow = '';
+		  if (lastFocusedElement) lastFocusedElement.focus();
+		  document.removeEventListener('keydown', onLightboxKey);
+		}
+
+		lightboxClose.addEventListener('click', closeLightbox);
+		lightboxOverlay.addEventListener('click', (e) => {
+		  // close when clicking outside the modal/dialog area
+		  if (e.target === lightboxOverlay || e.target.classList.contains('overlay')) closeLightbox();
+		});
+
+		function onLightboxKey(e) {
+		  if (e.key === 'Escape') closeLightbox();
+		}
+
+		/******************************
+		 * Modal: sponsor details
+		 ******************************/
+		const detailOverlay = document.getElementById('detailOverlay');
+		const detailBody = document.getElementById('detailBody');
+		const detailClose = document.getElementById('detailClose');
+
+		function openDetailsModal(s) {
+		  lastFocusedElement = document.activeElement;
+		  detailBody.innerHTML = `
+			<div style="display:grid;grid-template-columns:1fr;gap:0.75rem;">
+			  <img src="${s.image2 || s.image}" alt="${s.alt || s.name}" style="width:100%;border-radius:8px;max-height:240px;object-fit:cover;" loading="lazy">
+			  <div>
+				<h4 style="font-weight:700;margin-bottom:0.25rem;">${s.name}</h4>
+				<p style="color:#475569;margin-bottom:0.5rem;">${s.details}</p>
+				<p style="font-size:0.95rem;"><strong>What they did:</strong> ${s.short}</p>
+				<p style="margin-top:0.6rem;"><a href="${s.website}" target="_blank" rel="noopener" class="btn">Visit sponsor website</a></p>
+			  </div>
+			</div>
+		  `;
+		  detailOverlay.classList.remove('hidden');
+		  document.body.style.overflow = 'hidden';
+		  detailClose.focus();
+		  document.addEventListener('keydown', onDetailKey);
+		}
+
+		function closeDetailsModal() {
+		  detailOverlay.classList.add('hidden');
+		  detailBody.innerHTML = '';
+		  document.body.style.overflow = '';
+		  if (lastFocusedElement) lastFocusedElement.focus();
+		  document.removeEventListener('keydown', onDetailKey);
+		}
+
+		detailClose.addEventListener('click', closeDetailsModal);
+		detailOverlay.addEventListener('click', (e) => {
+		  if (e.target === detailOverlay || e.target.classList.contains('overlay')) closeDetailsModal();
+		});
+
+		function onDetailKey(e) {
+		  if (e.key === 'Escape') closeDetailsModal();
+		}
+
+		/******************************
+		 * Search & filter
+		 ******************************/
+		const searchInput = document.getElementById('search');
+		const resetBtn = document.getElementById('resetBtn');
+
+		function filterSponsors(q) {
+		  const term = (q || '').trim().toLowerCase();
+		  if (!term) return sponsors.slice();
+		  return sponsors.filter(s => {
+			return s.name.toLowerCase().includes(term) || s.short.toLowerCase().includes(term) || s.details.toLowerCase().includes(term);
+		  });
+		}
+
+		searchInput.addEventListener('input', () => {
+		  const results = filterSponsors(searchInput.value);
+		  renderGrid(results);
+		});
+
+		resetBtn.addEventListener('click', () => {
+		  searchInput.value = '';
+		  renderGrid(sponsors);
+		  searchInput.focus();
+		});
+
+		/******************************
+		 * Small accessibility/UX helpers
+		 ******************************/
+		// Add focus outline for keyboard users
+		(function setupFocusRing() {
+		  function handleFirstTab(e) {
+			if (e.key === 'Tab') {
+			  document.body.classList.add('keyboard-user');
+			  window.removeEventListener('keydown', handleFirstTab);
+			}
+		  }
+		  window.addEventListener('keydown', handleFirstTab);
+		})();
+
+		// Ensure images exist: fallback alt text handled by markup
+	  </script>
+	</body>
+</html>
